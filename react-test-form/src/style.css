@@ -1,0 +1,38 @@
+h1, p {
+  font-family: Lato;
+}
+
+h1,
+p {
+  font-family: Lato;
+}
+
+.field-header {
+  margin-bottom: 16px;
+}
+
+.fields-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.fields-button {
+  text-transform: uppercase;
+  display: inline-block;
+  font-size: 15px;
+  margin-top: 30px;
+  padding: 6px;
+  border: 1px solid lightgray;
+  border-radius: 4px;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.field {
+  width: 100%;
+  border: 1px solid lightgray;
+  min-height: 24px;
+  border-radius: 4px;
+  margin-right: 16px;
+  padding-left: 6px;
+}
