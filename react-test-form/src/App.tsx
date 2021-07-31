@@ -5,23 +5,27 @@ import { useFields } from "./redux/selectors";
 import getFields from "./services/select";
 import updateFields from "./services/update";
 import createFields from "./services/create";
+import {} from "./";
 import "./style.css";
+import { createRecord } from "./redux/operations";
+import { useDispatch } from "react-redux";
 
 const App = () => {
   const fieldData = useFields();
+  const dispatch = useDispatch();
   // console.log("fieldData", fieldData);
 
-  useEffect(() => {
-    getFields();
-  }, []);
+  // useEffect(() => {
+  //   getFields();
+  // }, []);
+
+  // useEffect(() => {
+  //   updateFields();
+  // });
 
   useEffect(() => {
-    updateFields();
-  });
-
-  useEffect(() => {
-    createFields();
-  });
+    dispatch(createRecord());
+  }, [dispatch]);
 
   return (
     <div>

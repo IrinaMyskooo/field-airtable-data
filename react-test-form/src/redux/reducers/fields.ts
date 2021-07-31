@@ -33,6 +33,7 @@ export const initialState: State = {
       value: 0,
     },
   ],
+  recordId: null,
   isLoading: false,
 };
 

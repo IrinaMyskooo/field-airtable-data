@@ -6,13 +6,6 @@ const createFields = () => {
       {
         fields: {
           Title: "some title",
-          Description: "some description dsfds fds",
-          Notes: "some notes",
-        },
-      },
-      {
-        fields: {
-          Title: "some title",
           Description: "some description",
           Notes: "some notes",
           Budget: 40,
@@ -25,9 +18,10 @@ const createFields = () => {
         console.error(err);
         return;
       }
-      records.forEach(function (record: any) {
-        console.log(record.getId());
-      });
+      console.log("CreateField", records);
+      //   records(function (record: any) {
+      //     // console.log("CreateField",record);
+      //   });
     }
   );
 };

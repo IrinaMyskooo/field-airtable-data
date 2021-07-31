@@ -1,24 +1,11 @@
 import base from "./api";
 
-const updateFields = () => {
+const updateFields = (recordId, fields) => {
   base("Form Submissions").update(
     [
       {
-        id: "recAIOKYgeRaXdqJg",
-        fields: {
-          Title: "some title",
-          Description: "some description dsfds fds",
-          Notes: "some notes",
-        },
-      },
-      {
-        id: "recEqd8TcDrgNoyST",
-        fields: {
-          Title: "some title",
-          Description: "some description",
-          Notes: "some notes",
-          Budget: 40,
-        },
+        id: recordId,
+        fields,
       },
     ],
     function (err, records) {

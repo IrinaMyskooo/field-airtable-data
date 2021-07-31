@@ -25,6 +25,7 @@ export type Field =
 export type State = {
   fieldData: Field[];
   isLoading: boolean;
+  recordId: string | null;
 };
 
 export type SetTextFieldValueType = {
