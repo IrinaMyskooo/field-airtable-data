@@ -1,7 +1,7 @@
 import base from "./api";
 
-const updateFields = (recordId: string, fields: any) => {
-  base("Form Submissions").update(
+const updateFields = async (recordId: string, fields: any) => {
+ const result = await base("Form Submissions").update(
     [
       {
         id: recordId,
@@ -18,6 +18,7 @@ const updateFields = (recordId: string, fields: any) => {
       });
     }
   );
+  return result;
 };
 
 export default updateFields;

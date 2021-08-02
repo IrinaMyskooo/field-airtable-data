@@ -1,5 +1,5 @@
 import { Action, State, Field } from "../types";
-import {SET_NUMBER_FIELD_VALUE, SET_TEXT_FIELD_VALUE, SELECT_FIELD, CREATE_RECORD_SUCCESS, UPDATE_FIELD} from '../constants';
+import {SET_NUMBER_FIELD_VALUE, SET_TEXT_FIELD_VALUE, CREATE_RECORD_SUCCESS, UPDATE_FIELD} from '../constants';
 
 export const getInitialState = (): Field[] => [
   {
@@ -84,15 +84,10 @@ const reducer = (state: State = initialState, action: Action) => {
         }),
       };
     }
-    case SELECT_FIELD: 
-      return {
-  ...state,
-  fieldData: action.payload,
-}
-    case CREATE_RECORD_SUCCESS: 
+   case CREATE_RECORD_SUCCESS: 
       return {
         ...state,
-        fieldData: { ...state.fieldData, ...action.payload}
+        recordId: action.payload
       }; 
     case UPDATE_FIELD: 
     return {

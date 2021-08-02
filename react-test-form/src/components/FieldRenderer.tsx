@@ -33,8 +33,7 @@ const FieldRenderer = (props: Props) => {
       return <DoubleBudget value={field.value} fieldName={field.name} />;
     default:
       return null;
-    // throw new Error(`Unknown field type: ${field.type}`);
-  }
+     }
 };
 
 export default FieldRenderer;

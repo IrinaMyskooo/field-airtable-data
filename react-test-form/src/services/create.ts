@@ -1,30 +1,29 @@
 import base from "./api";
 import {Field} from '../redux/types';
+// import {useFieldData} from '../useFieldData';
 
-const createFields = (fields: Field) => {
-  base("Form Submissions").create(
+// {
+//   "Title": "title",
+//   "Description": "description",
+//   "Notes": "notes",
+//   "Buget": 40,
+// }
+const createFields = async (fields: Field) => {
+  console.log('fields', fields);
+  
+  const result = await base("Form Submissions").create(
     [
       {
-        "fields": {
-          "Title": fields.name,
-          "Description": fields.value,
-          "Notes": fields.value,
-          "Budget": fields.value
+          "Title": "title",
+          "Description": "description",
+          "Notes": "notes",
+          "Buget": 40,
         }
-       },
-       ],
-    { typecast: true },
-    function (err: any, records: any) {
-      if (err) {
-        console.error(err);
-        return;
-      }
-      console.log("CreateField RECORDS", records);
-      //   records(function (record: any) {
-      //     // console.log("CreateField",record);
-      //   });
-    }
+    ],
+    { typecast: true }
   );
+
+  return result;
 };
 
 export default createFields;

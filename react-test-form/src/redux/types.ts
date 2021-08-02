@@ -1,4 +1,4 @@
-import {SET_NUMBER_FIELD_VALUE, SET_TEXT_FIELD_VALUE, SELECT_FIELD, CREATE_RECORD_SUCCESS, UPDATE_FIELD, CREATE_RECORD_FAILED} from './constants';
+import {SET_NUMBER_FIELD_VALUE, SET_TEXT_FIELD_VALUE, CREATE_RECORD_SUCCESS, UPDATE_FIELD, CREATE_RECORD_FAILED} from './constants';
 
 export type Field =
   | {
@@ -19,8 +19,6 @@ export type Field =
       name: string;
       value: number;
     };
-
-// export type State = Field[]
 
 export type State = {
   fieldData: Field[];
@@ -56,21 +54,13 @@ export type createRecordSucceededType = {
   type: typeof CREATE_RECORD_SUCCESS;
   payload: {
     recordId: string;
-    // value: number | string;
-  }
+    fields: Field[];
+   }
 }
-
-export type SelectFieldData = {
-  type: typeof SELECT_FIELD;
-  payload: {
-    fieldId: string;
-    value: number | string;
-  }
-};
 
 export type failedOperationsType = {
   type: typeof CREATE_RECORD_FAILED;
   payload: any;
 }
 
-export type Action = SetTextFieldValueType | SetNumberFieldValueType | UpdateFieldType | createRecordSucceededType | SelectFieldData;
+export type Action = SetTextFieldValueType | SetNumberFieldValueType | UpdateFieldType | createRecordSucceededType;

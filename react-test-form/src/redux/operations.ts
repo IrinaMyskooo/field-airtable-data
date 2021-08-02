@@ -4,21 +4,20 @@ import { Dispatch } from "redux";
 import { GlobalState} from "./reducers";
 import createFields from "../services/create";
 import updateFields from '../services/update';
-import getFields from '../services/select';
 import {getInitialState} from "./reducers/fields";
-import {createRecordSucceeded, failedOperations, updateField, selectField} from './actions';
+import {createRecordSucceeded, failedOperations, updateField} from './actions';
 
 export const createRecord = () => {
-  return (dispatch: Dispatch, getState: () => GlobalState) => {
+  return async (dispatch: Dispatch, getState: () => GlobalState) => {
     const recordId = getState().fields.recordId;
     console.log("recordId", recordId);
     if (recordId !== null) {
       return;
     }
     try {
-      const record = createFields(getInitialState());
-      dispatch(createRecordSucceeded(recordId));
-      console.log(records)
+      const record = await createFields(getInitialState());
+      console.log("record", record)
+      dispatch(createRecordSucceeded({recordId: record.id, fields: record.fields}));
      } catch (error) {
       dispatch(failedOperations);
     }
@@ -35,14 +34,3 @@ export const updateFieldsThunk = () => {
    }
   }
 };
-
-export const selectedFields = () => {
-  return (dispatch: Dispatch) => {
-    try {
-      getFields(getInitialState());
-      dispatch(selectField(values))
-    } catch (error) {
-      dispatch(failedOperations)
-    }
-  }
-}
