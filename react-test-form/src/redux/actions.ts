@@ -1,11 +1,12 @@
 import {
-  SET_TEXT_FIELD_VALUE,
-  SET_NUMBER_FIELD_VALUE,
   SetTextFieldValueType,
   SetNumberFieldValueType,
-  getUpdatedDataType,
-  GET_UPDATED_DATA,
+  UpdateFieldType,
+  createRecordSucceededType,
+  SelectFieldData, 
+  failedOperationsType
 } from "./types";
+import {SET_NUMBER_FIELD_VALUE, SET_TEXT_FIELD_VALUE, SELECT_FIELD, CREATE_RECORD_SUCCESS, UPDATE_FIELD, CREATE_RECORD_FAILED} from './constants';
 
 export const setTextFieldValue = (
   payload: SetTextFieldValueType["payload"]
@@ -21,9 +22,31 @@ export const setNumberFieldValue = (
   payload,
 });
 
-export const getUpdatedData = (
-  payload: getUpdatedDataType["payload"]
-): getUpdatedDataType => ({
-  type: GET_UPDATED_DATA,
+export const updateField = (
+  payload: UpdateFieldType["payload"]
+): UpdateFieldType => ({
+  type: UPDATE_FIELD,
   payload,
 });
+
+export const createRecordSucceeded = (
+  payload: createRecordSucceededType["payload"]
+  ): createRecordSucceededType => ({
+    type: CREATE_RECORD_SUCCESS,
+    payload,
+  });
+
+export const selectField = (
+  payload: SelectFieldData["payload"])
+  : SelectFieldData => ({
+    type: SELECT_FIELD,
+    payload,
+  });
+
+export const failedOperations = (
+  payload: failedOperationsType["payload"])
+  : failedOperationsType => ({
+    type: CREATE_RECORD_FAILED,
+    payload: new Error("Error"),
+    
+  })

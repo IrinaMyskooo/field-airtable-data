@@ -1,24 +1,25 @@
 import base from "./api";
+import {Field} from '../redux/types';
 
-const createFields = () => {
+const createFields = (fields: Field) => {
   base("Form Submissions").create(
     [
       {
-        fields: {
-          Title: "some title",
-          Description: "some description",
-          Notes: "some notes",
-          Budget: 40,
-        },
-      },
-    ],
+        "fields": {
+          "Title": fields.name,
+          "Description": fields.value,
+          "Notes": fields.value,
+          "Budget": fields.value
+        }
+       },
+       ],
     { typecast: true },
     function (err: any, records: any) {
       if (err) {
         console.error(err);
         return;
       }
-      console.log("CreateField", records);
+      console.log("CreateField RECORDS", records);
       //   records(function (record: any) {
       //     // console.log("CreateField",record);
       //   });

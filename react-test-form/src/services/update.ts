@@ -1,6 +1,6 @@
 import base from "./api";
 
-const updateFields = (recordId, fields) => {
+const updateFields = (recordId: string, fields: any) => {
   base("Form Submissions").update(
     [
       {
@@ -8,12 +8,12 @@ const updateFields = (recordId, fields) => {
         fields,
       },
     ],
-    function (err, records) {
+    function (err: any, records: any): void {
       if (err) {
         console.error(err);
         return;
       }
-      records?.forEach(function (record) {
+      records?.forEach(function (record: any) {
         console.log(record.get("Description"));
       });
     }

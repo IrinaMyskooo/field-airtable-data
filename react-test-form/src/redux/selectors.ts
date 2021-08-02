@@ -14,3 +14,7 @@ export const useALoading = (): boolean => {
   // const isLoading:
   return useSelector((state: GlobalState) => state.fields.isLoading);
 };
+
+export const useRecordId = () => {
+  return useSelector((state: GlobalState) => state.fields.recordId)
+}

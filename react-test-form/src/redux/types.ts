@@ -1,6 +1,4 @@
-export const SET_TEXT_FIELD_VALUE = "SET_TEXT_FIELD_VALUE" as const;
-export const SET_NUMBER_FIELD_VALUE = "SET_NUMBER_FIELD_VALUE" as const;
-export const GET_UPDATED_DATA = "GET_UPDATED_DATA" as const;
+import {SET_NUMBER_FIELD_VALUE, SET_TEXT_FIELD_VALUE, SELECT_FIELD, CREATE_RECORD_SUCCESS, UPDATE_FIELD, CREATE_RECORD_FAILED} from './constants';
 
 export type Field =
   | {
@@ -22,6 +20,8 @@ export type Field =
       value: number;
     };
 
+// export type State = Field[]
+
 export type State = {
   fieldData: Field[];
   isLoading: boolean;
@@ -32,7 +32,7 @@ export type SetTextFieldValueType = {
   type: typeof SET_TEXT_FIELD_VALUE;
   payload: {
     fieldId: string;
-    value: number;
+    value: string;
   };
 };
 
@@ -44,12 +44,33 @@ export type SetNumberFieldValueType = {
   };
 };
 
-export type getUpdatedDataType = {
-  type: typeof GET_UPDATED_DATA;
+export type UpdateFieldType = {
+  type: typeof UPDATE_FIELD;
   payload: {
     fieldId: string;
-    value: number;
+    value: number | string;
   };
 };
 
-export type Action = SetTextFieldValueType | SetNumberFieldValueType;
+export type createRecordSucceededType = {
+  type: typeof CREATE_RECORD_SUCCESS;
+  payload: {
+    recordId: string;
+    // value: number | string;
+  }
+}
+
+export type SelectFieldData = {
+  type: typeof SELECT_FIELD;
+  payload: {
+    fieldId: string;
+    value: number | string;
+  }
+};
+
+export type failedOperationsType = {
+  type: typeof CREATE_RECORD_FAILED;
+  payload: any;
+}
+
+export type Action = SetTextFieldValueType | SetNumberFieldValueType | UpdateFieldType | createRecordSucceededType | SelectFieldData;
